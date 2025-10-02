@@ -1,6 +1,6 @@
 use bevy::prelude::*; 
 use avian3d::prelude::*; 
-use super::{level::level, player::player, window::window, cursor::cursor};
+use super::{level::level, player::player, window::window, cursor::cursor, ui::ui};
 
 pub struct GamePlugin; 
 impl Plugin for GamePlugin {
@@ -12,6 +12,7 @@ impl Plugin for GamePlugin {
                 player::PlayerPlugin,
                 window::WindowSettingsPlugin,
                 cursor::CursorPlugin,
+                ui::UiPlugin,
             ));
     }
 }
