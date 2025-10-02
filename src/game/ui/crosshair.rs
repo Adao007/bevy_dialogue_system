@@ -3,6 +3,7 @@ use bevy::{
     window::PrimaryWindow,
 };
 
+// This node bundle is like a canvas that we can print on!
 pub fn spawn_crosshair(
     window_query: Query<&Window, With<PrimaryWindow>>,
     mut commands: Commands,

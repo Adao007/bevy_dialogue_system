@@ -4,3 +4,4 @@ pub mod player;
 pub mod window;
 pub mod cursor;
 mod ui;
+mod shooting;
