@@ -6,8 +6,7 @@ use bevy::{
 pub struct CursorPlugin;
 impl Plugin for CursorPlugin {
     fn build(&self, app: &mut App) {
-        app
-            .init_resource::<Cursor>()
+        app.init_resource::<Cursor>()
             .add_systems(Startup, init_cursor_properties)
             .add_systems(Update, update_cursor_locking);
     }
@@ -19,20 +18,17 @@ pub struct Cursor {
 }
 
 impl Cursor {
-    pub fn invert_lock(
-        &mut self,
-        windows: &mut Query<&mut Window, With<PrimaryWindow>>
-    ) {
+    pub fn invert_lock(&mut self, windows: &mut Query<&mut Window, With<PrimaryWindow>>) {
         self.locked = !self.locked;
         if let Ok(mut window) = windows.single_mut() {
             window.cursor_options.visible = !self.locked;
             if self.locked {
                 let window_height = window.height();
                 let window_width = window.width();
-                window.cursor_options.grab_mode = CursorGrabMode::Locked; // Works for Windows, use CursorGrabMode::Locked for else
-                window.set_cursor_position(Some(Vec2::new(window_width / 2.0, window_height / 2.0)));
-            }
-            else {
+                window.cursor_options.grab_mode = CursorGrabMode::Confined; // Works for Windows, use CursorGrabMode::Locked for else
+                window
+                    .set_cursor_position(Some(Vec2::new(window_width / 2.0, window_height / 2.0)));
+            } else {
                 window.cursor_options.grab_mode = CursorGrabMode::None;
             }
         }

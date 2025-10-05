@@ -16,11 +16,7 @@ pub struct BulletTracer {
 }
 
 impl BulletTracer {
-    pub fn new(
-        start: Vec3,
-        end: Vec3,
-        speed: f32,
-    ) -> BulletTracer {
+    pub fn new(start: Vec3, end: Vec3, speed: f32) -> BulletTracer {
         BulletTracer {
             start_position: start,
             end_position: end,
@@ -41,7 +37,7 @@ fn update_tracers(
         transform.translation = Vec3::lerp(
             tracer.start_position,
             tracer.end_position,
-            f32::clamp(tracer.time_alive/ tracer.lifetime, 0.0, 1.0),
+            f32::clamp(tracer.time_alive / tracer.lifetime, 0.0, 1.0),
         );
         transform.look_at(tracer.end_position, Vec3::Y);
 
