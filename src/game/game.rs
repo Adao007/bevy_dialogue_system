@@ -1,6 +1,4 @@
-use super::{
-    cursor::cursor, level::level, player::player, shooting::tracer, ui::ui, window::window,
-};
+use super::{cursor::cursor, level::level, player::player, ui::ui, window::window};
 use bevy::prelude::*;
 use bevy_rapier3d::plugin::{NoUserData, RapierPhysicsPlugin};
 

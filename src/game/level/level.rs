@@ -1,3 +1,4 @@
+use super::target;
 use bevy::prelude::*;
 use bevy_rapier3d::prelude::*;
 
@@ -24,8 +25,8 @@ fn setup_level(
 
     // Spawn a Wall
     commands.spawn((
-        Collider::cuboid(30.0, 30.0, 30.0),
-        Mesh3d(meshes.add(Cuboid::new(30.0, 30.0, 30.0))),
+        Collider::cuboid(35.0, 35.0, 30.0),
+        Mesh3d(meshes.add(Cuboid::from_length(70.0))),
         MeshMaterial3d(materials.add(Color::WHITE)),
         Transform::from_xyz(0.0, 0.0, -100.0),
     ));

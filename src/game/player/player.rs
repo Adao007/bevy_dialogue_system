@@ -1,5 +1,8 @@
 use super::camera_controller;
-use crate::game::shooting;
+use crate::game::{
+    level::target::{DeadTarget, Target},
+    shooting,
+};
 use bevy::{prelude::*, window::PrimaryWindow};
 use bevy_rapier3d::{plugin::ReadRapierContext, prelude::QueryFilter};
 
@@ -50,6 +53,7 @@ fn update_player(
     window_query: Query<&Window, With<PrimaryWindow>>,
     mut meshes: ResMut<Assets<Mesh>>,
     mut materials: ResMut<Assets<StandardMaterial>>,
+    target_query: Query<Entity, With<Target>>,
 ) {
     let window = window_query.single().unwrap();
     let context = rapier_context.single().unwrap();
@@ -69,6 +73,9 @@ fn update_player(
                 );
 
                 if let Some((entity, ray_intersection)) = hit {
+                    if let Ok(_entity) = target_query.get(entity) {
+                        commands.entity(entity).insert(DeadTarget);
+                    }
                     let tracer = StandardMaterial {
                         base_color: Color::srgb(1.0, 1.0, 0.0),
                         unlit: true,

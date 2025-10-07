@@ -1,6 +1,6 @@
 use bevy::{
     prelude::*,
-    window::{PrimaryWindow, WindowMode, WindowResolution},
+    window::{PrimaryWindow, WindowResolution},
 };
 
 pub struct WindowSettingsPlugin;

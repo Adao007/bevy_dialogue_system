@@ -1,2 +1,2 @@
-# bevy_dialogue_system
-A learning project for creating a reusable dialogue system.
+# target_practice in bevy!
+A learning project for learning FPS programming in 3D!
